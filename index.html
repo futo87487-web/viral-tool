@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="monetag" content="8477abbec2b233632b12bc3d61eb07eb">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Formatter & Character Counter for TikTok, Insta, X</title>
+    <style>
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #f8fafc; text-align: center; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #1e293b; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        textarea { width: 95%; height: 140px; background: #334155; color: #fff; border: 1px solid #475569; border-radius: 8px; padding: 12px; font-size: 16px; resize: none; }
+        .limit-card { display: inline-block; background: #475569; padding: 8px 15px; margin: 8px; border-radius: 6px; font-size: 14px; font-weight: bold; }
+        .danger { background: #ef4444 !important; animation: shake 0.2s; }
+        button { background: #3b82f6; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 6px; cursor: pointer; margin-top: 15px; font-weight: bold; }
+        button:hover { background: #2563eb; }
+        .ad-box { margin-top: 25px; width: 100%; height: 90px; background: #334155; border: 2px dashed #64748b; line-height: 90px; color: #94a3b8; font-size: 12px; border-radius: 6px; }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ Viral Social Bio Formatter ✨</h1>
+    <p style="color: #94a3b8;">Format clean spaces & track real-time limit blocks</p>
+    
+    <textarea id="bioInput" placeholder="Type or paste your social media bio here..."></textarea>
+    
+    <div>
+        <div id="tiktokCard" class="limit-card">TikTok: <span id="ttCount">0</span>/80</div>
+        <div id="instaCard" class="limit-card">Instagram: <span id="instaCount">0</span>/150</div>
+        <div id="xCard" class="limit-card">X (Twitter): <span id="xCount">0</span>/160</div>
+    </div>
+
+    <button onclick="copyText()">📋 Copy Formatted Text</button>
+
+    <div class="ad-box">
+        [ Live Monetization Ad Banner Space ]
+    </div>
+</div>
+
+<script>
+    const input = document.getElementById('bioInput');
+    
+    input.addEventListener('input', () => {
+        const len = input.value.length;
+        document.getElementById('ttCount').textContent = len;
+        document.getElementById('instaCount').textContent = len;
+        document.getElementById('xCount').textContent = len;
+
+        document.getElementById('tiktokCard').classList.toggle('danger', len > 80);
+        document.getElementById('instaCard').classList.toggle('danger', len > 150);
+        document.getElementById('xCard').classList.toggle('danger', len > 160);
+    });
+
+    function copyText() {
+        input.select();
+        document.execCommand('copy');
+        alert('Copied to clipboard! Ready to paste into your bio.');
+    }
+</script>
+
+</body>
+</html>
